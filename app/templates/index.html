@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Todo List</title>
+    </head>
+    <body>
+        <div>
+            <h1>TodoList</h1>
+            <div>
+                <form method="POST" action="/create">
+                    <span>
+                        <label>Task:</label>
+                        <input type="text" name="task">
+                    </span>
+                </form>
+            </div>
+            <div>
+                <ul>
+                    <li>Goの勉強をする</li>
+                    <li>バスのチケットを取る</li>
+                    <li>履歴書を書く</li>
+                    {{ if ne .task ""}}
+                        <li>{{ .task }}</li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
