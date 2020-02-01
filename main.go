@@ -7,24 +7,24 @@ import (
 )
 
 //ルーティングの設定
-func setupRouter() *gin.Engine {
+func setupRouter(tasksPtr *[]string) *gin.Engine {
 	r := gin.Default()
 	// HTMLファイル読み込み
-	message := "Todo List"
 	r.LoadHTMLGlob("app/templates/*")
 
 	// 初期表示
 	r.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"message": message,
+			"tasks": *tasksPtr,
 		})
 	})
 
 	// タスク作成
 	r.POST("/create", func(c *gin.Context) {
-		task := c.PostForm("task")
+		// tasks sliceにPost Dataを追加
+		tasks := append(*tasksPtr, c.PostForm("task"))
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"task": task,
+			"tasks": tasks,
 		})
 	})
 
@@ -32,6 +32,12 @@ func setupRouter() *gin.Engine {
 }
 
 func main() {
-	r := setupRouter()
+	// taskリスト
+	var tasks []string
+	tasks = append(tasks, "Goの勉強をする")
+	tasks = append(tasks, "バスのチケットを取る")
+	tasks = append(tasks, "履歴書を書く")
+
+	r := setupRouter(&tasks)
 	r.Run(":8080")
 }

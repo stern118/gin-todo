@@ -13,15 +13,15 @@
                         <label>Task:</label>
                         <input type="text" name="task">
                     </span>
+                    <span>
+                        <input type="submit" value="Add">
+                    </span>
                 </form>
             </div>
             <div>
                 <ul>
-                    <li>Goの勉強をする</li>
-                    <li>バスのチケットを取る</li>
-                    <li>履歴書を書く</li>
-                    {{ if ne .task ""}}
-                        <li>{{ .task }}</li>
+                    {{ range .tasks}}
+                        <li>{{ . }}</li>
                     {{ end }}
                 </ul>
             </div>
