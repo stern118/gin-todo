@@ -16,8 +16,10 @@ import (
 //ルーティングの設定
 func setupRouter() *gin.Engine {
 	r := gin.Default()
-	// HTMLファイル読み込み
-	r.LoadHTMLGlob("app/templates/*")
+
+	// 静的ファイル読み込み
+	r.Static("/assets", "./app/assets")
+	r.LoadHTMLGlob("app/templates/*.html")
 
 	// 初期表示
 	r.GET("/", func(c *gin.Context) {

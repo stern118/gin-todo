@@ -2,15 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="/assets/css/index.css">
         <title>Todo List</title>
     </head>
     <body>
-        <div>
-            <h1>TodoList</h1>
-            <div>
+        <div class="container">
+            <h1 class="title">TodoList</h1>
+            <div class="form">
                 <form method="POST" action="/create">
                     <span>
-                        <label>Task:</label>
                         <input type="text" name="task">
                     </span>
                     <span>
@@ -18,8 +18,8 @@
                     </span>
                 </form>
             </div>
-            <div>
-                <ul>
+            <div class="task-list">
+                <ul class="task">
                     {{ range .tasks}}
                         <li>{{ .TaskName }}</li>
                     {{ end }}
