@@ -24,7 +24,7 @@ func setupRouter() *gin.Engine {
 	// 初期表示
 	r.GET("/", func(c *gin.Context) {
 		ctx := context.Background()
-		db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3300)/todos?parseTime=true")
+		db, err := sql.Open("mysql", "root:root@tcp(127.0.0.1:3300)/todos?parseTime=true&loc=Asia%2FTokyo")
 		if err != nil {
 			panic(err.Error())
 		}
