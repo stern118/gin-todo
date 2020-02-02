@@ -1,0 +1,7 @@
+[mysql]
+  dbname  = "todos"
+  host    = "localhost"
+  port    = 3300
+  user    = "root"
+  pass    = "root"
+  sslmode = "false"
